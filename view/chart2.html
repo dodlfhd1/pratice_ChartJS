@@ -1,0 +1,111 @@
+<html>
+  <head>
+    <script type="text/javascript" src="../js/chart.js"></script>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+  </head>
+  <body>
+    <div id="div1" style="border: 1px #bef74e solid; width: 50vw; height: 50vh">
+      <canvas id="myChart"></canvas>
+    </div>
+
+    <script type="text/javascript">
+      var ctx = $("#myChart");
+
+      var lineVal = [3, 5, 7, 9, 2, 4, 6, 8, 1, 5];
+
+      var y_min_text = "";
+      var y_max_text = "";
+      var y_MIN =
+        y_min_text == ""
+          ? Number(Math.min.apply(null, lineVal) - 0.5)
+          : y_min_text;
+      var y_MAX =
+        y_max_text == ""
+          ? Number(Math.max.apply(null, lineVal) + 0.5)
+          : y_max_text;
+
+      var myChart = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+          datasets: [
+            {
+              //라인 그래프
+              label: "보정값 T향 LH 선 그래프",
+              data: lineVal, //비어있으면 라벨만 나오고 표시 안됨.
+              fill: false,
+              borderColor: "#2A3F54",
+              borderWidth: 2,
+              radius: 0,
+              pointStyle: "circle",
+              lineTension: 0.1,
+            },
+            {
+              //점 그래프
+              type: "scatter",
+              label: "보정값 T향 LH 점 그래프",
+              data: [3, 5, 7, 9, 2, 4, 6, 8, 1, 5], //비어있으면 라벨만 나오고 표시 안됨.
+              borderColor: "#2A3F54",
+              borderWidth: 2,
+            },
+            //상하한선 그리기 필요
+            {
+              //하한선 그래프
+              label: "MIN",
+              type: "line",
+              fill: false,
+              tension: 0,
+              data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+              pointStyle: "dash",
+              borderColor: "#82CDFF",
+              borderWidth: 2,
+              radius: 0,
+            },
+            {
+              //상한선 그래프
+              label: "MAX",
+              type: "line",
+              fill: false,
+              tension: 0,
+              data: [9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
+              pointStyle: "dash",
+              borderColor: "#FFA0B4",
+              borderWidth: 2,
+              radius: 0,
+            },
+            {
+              //기준값 그래프
+              label: "SPEC[" + 5 + "]",
+              type: "line",
+              fill: false,
+              tension: 0,
+              data: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+              pointStyle: "dash",
+              borderColor: "#1abb9c",
+              borderWidth: 2,
+              radius: 0,
+            },
+          ],
+        },
+        options: {
+          maintainAspectRatio: false, //상위 element 에 크기 상속 개념(그래프 안깨지면서)
+          legend: {
+            position: "chartArea",
+            align: "start",
+          },
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  min: y_MIN,
+                  max: y_MAX,
+                  stepSize: 0.5,
+                },
+              },
+            ],
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

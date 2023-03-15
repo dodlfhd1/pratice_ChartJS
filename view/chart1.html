@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <script type="text/javascript" src="../js/chart.js"></script>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+  </head>
+  <body>
+    <div id="div1" style="border: 1px #bef74e solid; width: 50vw; height: 50vh">
+      <canvas id="myChart"></canvas>
+    </div>
+
+    <script type="text/javascript">
+      var ctx = $("#myChart");
+
+      var myChart = new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels: ["OK", "NG"],
+          datasets: [
+            {
+              label: "KA4 LH",
+              data: [60, 40], //받아온 데이터
+              backgroundColor: ["#267257" /*#17a079*/, "#aa3939" /*#e6544e*/],
+              borderColor: "#22252B",
+            },
+          ],
+        },
+        options: {
+          title: {
+            display: true,
+            text: "KA4 LH",
+            align: "end",
+            position: "top",
+            fontSize: 25,
+            fontColor: "black",
+          },
+          responsive: true,
+          maintainAspectRatio: false,
+          legend: {
+            position: "top",
+            fontColor: "black",
+            align: "center",
+            display: true,
+            fullWidth: true,
+            labels: {
+              fontColor: "rgb(0, 0, 0)",
+            },
+          },
+          plugins: {
+            labels: {
+              render: "value",
+              fontColor: "black",
+              fontSize: 15,
+              precision: 2,
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
