@@ -2,9 +2,20 @@
   <head>
     <script type="text/javascript" src="../js/chart.js"></script>
     <script type="text/javascript" src="../js/jquery.js"></script>
+    <!-- wow.js 와 호환 -->
+    <link href="../css/animate.css" rel="stylesheet" />
+    <!-- 애니메이션 라이브러리 -->
+    <script type="text/javascript" src="../js/wow.js"></script>
+    <script>
+      new WOW().init();
+    </script>
   </head>
   <body>
-    <div id="div1" style="border: 1px #bef74e solid; width: 50vw; height: 50vh">
+    <div
+      class="wow bounceInUp"
+      id="div1"
+      style="border: 1px #bef74e solid; width: 50vw; height: 50vh"
+    >
       <canvas id="myChart"></canvas>
     </div>
 
